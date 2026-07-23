@@ -5,7 +5,6 @@ const path = require('path');
 let tray = null;
 let mainWindow = null;
 
-// گوش دادن به درخواست باز کردن فایل از Renderer
 ipcMain.on('open-file-dialog', (event) => {
     dialog.showOpenDialog({
         title: 'Select a File',
@@ -19,7 +18,7 @@ ipcMain.on('open-file-dialog', (event) => {
             const filePath = result.filePaths[0];
             event.reply('selected-file', filePath);
             
-            // خواندن محتوای فایل
+           
             fs.readFile(filePath, 'utf8', (err, data) => {
                 if (err) {
                     console.error('Error reading file:', err);
