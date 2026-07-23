@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html data-bs-theme="dark" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>zinplyCode</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geomini:wght@200..800&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+
+<!-- فایل اصلی Ace Editor -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ace.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/src-min-noconflict/mode-javascript.js"></script>
+<!-- برای اضافه کردن autocompletion (مثل VS Code) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.7/ext-language_tools.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="dialog" style="height: 100vh;display: flex;position: fixed;z-index: 9999;width: 100%;background: rgba(255, 255, 255, 0.3);backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);">
+        <div id="sa"><span class="spinner-border spinner-border-sm" role="status" style="width: 50px; height: 50px;"></span></div>
+        <div id="su">
+            <div style="padding: 15px;">
+                <h3 id="dialog_title" class="geomini no-select">Update yourself.</h3>
+                <p id="dialog_info" class="no-select">You're using old version of ZPC.<br>Pleases update it, to have best possible using.</p>
+                <div id="aaasss" style="height: 200px;">
+                    <div class="text-center" style="padding: 5px; display: flex;" onclick="setlang(&quot;psl&quot;);"><img src="assets/img/psl.jpg" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;P/</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/js.png" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;Javascript</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/C1stEdition.svg.webp" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;C</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/Typescript.svg.webp" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;Typescript</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;" onclick="setlang(&quot;d&quot;);"><img src="assets/img/d.webp" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;D</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/Go-Logo_Blue.png" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;Go</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/ISO_C++_Logo.svg.webp" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp; C++</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/Rust_programming_language_black_logo.svg.webp" style="height: 40px; width: 40px; background-color: white;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;Rust</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex;">
+                <div id="red-button" style="width: 50%; background-color: red; padding: 5px; display: flex;">
+                    <p class="no-select">not now</p>
+                </div>
+                <div id="blue-button" style="width: 50%;padding: 5px; display: flex;">
+                    <p class="no-select">Update it</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="d1ialog" style="height: 100vh;display: flex;position: fixed;z-index: 9999;width: 100%;background: rgba(255, 255, 255, 0.3);backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);">
+        <div id="s1a"><span class="spinner-border spinner-border-sm" role="status" style="width: 50px; height: 50px;"></span></div>
+        <div id="s1u">
+            <div style="padding: 15px;">
+                <h3 id="dialog_title-1" class="geomini no-select">Update yourself.</h3>
+                <p id="dialog_info-1" class="no-select">You're using old version of ZPC.<br>Pleases update it, to have best possible using.</p>
+                <div id="aaasss" style="height: 200px;">
+                    <div class="text-center" style="padding: 5px; display: flex;" onclick="setlang(&quot;psl&quot;);"><img src="assets/img/psl.jpg" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;P/</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/js.png" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;Javascript</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/C1stEdition.svg.webp" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;C</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/Typescript.svg.webp" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;Typescript</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;" onclick="setlang(&quot;d&quot;);"><img src="assets/img/d.webp" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;D</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/Go-Logo_Blue.png" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;Go</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/ISO_C++_Logo.svg.webp" style="height: 40px; width: 40px;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp; C++</p>
+                        </div>
+                    </div>
+                    <div class="text-center" style="padding: 5px; display: flex;"><img src="assets/img/Rust_programming_language_black_logo.svg.webp" style="height: 40px; width: 40px; background-color: white;">
+                        <div style="display: flex; align-items: center; width: 100%;">
+                            <p class="text-center" style="height: 30%; font-size: 20px;">&nbsp;Rust</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: flex;">
+                <div id="red-button" style="width: 50%; background-color: red; padding: 5px; display: flex;">
+                    <p class="no-select">not now</p>
+                </div>
+                <div id="blue-button" style="width: 50%;padding: 5px; display: flex;">
+                    <p class="no-select">Update it</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="screen" style="height: 96vh;">
+        <div style="padding: 5px; display: flex; position: relative">
+            <div id="lla" class="no-select" onclick="const u = document.getElementById(&quot;dropdown-menu&quot;).style.display; if (u == &quot;none&quot;){ document.getElementById(&quot;dropdown-menu&quot;).style.display = &quot;block&quot;; } else {  document.getElementById(&quot;dropdown-menu&quot;).style.display = &quot;none&quot;; }">
+                <h1 class="geomini" style="font-size: 15px; font-weight: bold; margin-bottom: 0;">ZenPly</h1>
+                <p style="font-weight: 300; font-size: 10px; margin-bottom: 0;">Code</p>
+            </div>
+            <div id="alo" style="width: 100%; display: flex;"><input type="text" placeholder="Search inside ZenPly Configuration..." onclick="const u = document.getElementById(&quot;searchbar&quot;).style.display; if (u == &quot;none&quot;){ document.getElementById(&quot;searchbar&quot;).style.display = &quot;block&quot;; } else {  document.getElementById(&quot;searchbar&quot;).style.display = &quot;none&quot;; }" style="flex: 1; margin-left: 235px; margin-right: 200px;">
+                <div id="as" class="ol"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-bar-down" style="font-size: 20px;">
+                        <path fill-rule="evenodd" d="M3.646 4.146a.5.5 0 0 1 .708 0L8 7.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zM1 11.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5"></path>
+                    </svg></div>
+                <div id="as1" class="ol"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="font-size: 20px;">
+                        <path d="M6.2253 4.81108C5.83477 4.42056 5.20161 4.42056 4.81108 4.81108C4.42056 5.20161 4.42056 5.83477 4.81108 6.2253L10.5858 12L4.81114 17.7747C4.42062 18.1652 4.42062 18.7984 4.81114 19.1889C5.20167 19.5794 5.83483 19.5794 6.22535 19.1889L12 13.4142L17.7747 19.1889C18.1652 19.5794 18.7984 19.5794 19.1889 19.1889C19.5794 18.7984 19.5794 18.1652 19.1889 17.7747L13.4142 12L19.189 6.2253C19.5795 5.83477 19.5795 5.20161 19.189 4.81108C18.7985 4.42056 18.1653 4.42056 17.7748 4.81108L12 10.5858L6.2253 4.81108Z" fill="currentColor"></path>
+                    </svg></div>
+            </div>
+        </div>
+        <div id="searchbar" style="padding: 5px;">
+            <div id="login_banner" style="padding: 10px;display: flex;">
+                <div style="width: 100%;">
+                    <h4 class="geomini">Create an account</h4>
+                    <p>Log in to use all features.</p>
+                </div><!-- From Uiverse.io by Mike11jr --> 
+<div style="display: flex; align-items: center;">
+<button class="btn geomini">Create
+</button>
+</div>
+<style>
+/* From Uiverse.io by Mike11jr */ 
+.btn {
+ width: 130px;
+ height: 40px;
+ font-size: 1.1em;
+ cursor: pointer;
+ background-color: #171717;
+ color: #fff;
+ border: none;
+ border-radius: 5px;
+ transition: all .4s;
+}
+
+.btn:hover {
+ border-radius: 5px;
+ transform: translateY(-10px);
+ box-shadow: 0 7px 0 -2px #f85959,
+  0 15px 0 -4px #39a2db,
+  0 16px 10px -3px #39a2db;
+}
+
+.btn:active {
+ transition: all 0.2s;
+ transform: translateY(-5px);
+ box-shadow: 0 2px 0 -2px #f85959,
+  0 8px 0 -4px #39a2db,
+  0 12px 10px -3px #39a2db;
+}
+</style>
+            </div>
+            <div onclick="e1no();">
+                <div class="menu-item" style="padding: 5px;display: flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="" fill="currentColor" viewBox="0 0 16 16" class="bi bi-code-slash" style="font-size: 40px; padding: 5px;">
+                        <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"></path>
+                    </svg>
+                    <p style="width: 100%;">&nbsp;Set language by yourself</p>
+                    <div style="right:0; display: flex;">
+                        <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 5px; display: flex; align-items: center;">
+                            <p class="geomini" style="font-size: 10px;">CMD</p>
+                        </div>
+                        <p>&nbsp;+&nbsp;</p>
+                        <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 5px; display: flex; align-items: center;">
+                            <p class="geomini" style="font-size: 9px;">Shift</p>
+                        </div>
+                    </div>
+                    <p>&nbsp;+&nbsp;</p>
+                    <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 6px; display: flex; align-items: center;">
+                        <p class="geomini" style="font-size: 10px;">L</p>
+                    </div>
+                </div>
+                <div class="menu-item" style="padding: 5px;display: flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="" fill="currentColor" viewBox="0 0 16 16" class="bi bi-cone-striped" style="font-size: 40px; padding: 5px;">
+                        <path d="m9.97 4.88.953 3.811C10.159 8.878 9.14 9 8 9c-1.14 0-2.158-.122-2.923-.309L6.03 4.88C6.635 4.957 7.3 5 8 5s1.365-.043 1.97-.12m-.245-.978L8.97.88C8.718-.13 7.282-.13 7.03.88L6.275 3.9C6.8 3.965 7.382 4 8 4c.618 0 1.2-.036 1.725-.098zm4.396 8.613a.5.5 0 0 1 .037.96l-6 2a.5.5 0 0 1-.316 0l-6-2a.5.5 0 0 1 .037-.96l2.391-.598.565-2.257c.862.212 1.964.339 3.165.339s2.303-.127 3.165-.339l.565 2.257 2.391.598"></path>
+                    </svg>
+                    <p style="width: 100%;">&nbsp;Update Addons</p>
+                    <div style="right:0; display: flex;">
+                        <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 5px; display: flex; align-items: center;">
+                            <p class="geomini" style="font-size: 10px;">CMD</p>
+                        </div>
+                        <p>&nbsp;+&nbsp;</p>
+                        <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 5px; display: flex; align-items: center;">
+                            <p class="geomini" style="font-size: 9px;">Shift</p>
+                        </div>
+                    </div>
+                    <p>&nbsp;+&nbsp;</p>
+                    <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 6px; display: flex; align-items: center;">
+                        <p class="geomini" style="font-size: 10px;">U</p>
+                    </div>
+                </div>
+                <div class="menu-item" style="padding: 5px;display: flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="" fill="currentColor" viewBox="0 0 16 16" class="bi bi-bug-fill" style="font-size: 30px;padding: 5px;">
+                        <path d="M4.978.855a.5.5 0 1 0-.956.29l.41 1.352A4.985 4.985 0 0 0 3 6h10a4.985 4.985 0 0 0-1.432-3.503l.41-1.352a.5.5 0 1 0-.956-.29l-.291.956A4.978 4.978 0 0 0 8 1a4.979 4.979 0 0 0-2.731.811l-.29-.956z"></path>
+                        <path d="M13 6v1H8.5v8.975A5 5 0 0 0 13 11h.5a.5.5 0 0 1 .5.5v.5a.5.5 0 1 0 1 0v-.5a1.5 1.5 0 0 0-1.5-1.5H13V9h1.5a.5.5 0 0 0 0-1H13V7h.5A1.5 1.5 0 0 0 15 5.5V5a.5.5 0 0 0-1 0v.5a.5.5 0 0 1-.5.5zm-5.5 9.975V7H3V6h-.5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 0-1 0v.5A1.5 1.5 0 0 0 2.5 7H3v1H1.5a.5.5 0 0 0 0 1H3v1h-.5A1.5 1.5 0 0 0 1 11.5v.5a.5.5 0 1 0 1 0v-.5a.5.5 0 0 1 .5-.5H3a5 5 0 0 0 4.5 4.975"></path>
+                    </svg>
+                    <p style="width: 100%;">&nbsp; Report a bug</p>
+                    <div style="right:0; display: flex;"></div>
+                </div>
+            </div>
+            <div class="menu-item" style="padding: 5px;display: flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="" fill="currentColor" viewBox="0 0 16 16" class="bi bi-github" style="font-size: 40px; padding: 5px;">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8"></path>
+                </svg>
+                <p style="width: 100%;">&nbsp;Edit from github</p>
+                <div style="right:0; display: flex;">
+                    <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 5px; display: flex; align-items: center;">
+                        <p class="geomini" style="font-size: 10px;">CMD</p>
+                    </div>
+                    <p>&nbsp;+&nbsp;</p>
+                    <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 5px; display: flex; align-items: center;">
+                        <p class="geomini" style="font-size: 9px;">Shift</p>
+                    </div>
+                </div>
+                <p>&nbsp;+&nbsp;</p>
+                <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 6px; display: flex; align-items: center;">
+                    <p class="geomini" style="font-size: 10px;">G</p>
+                </div>
+            </div>
+            <div class="menu-item" style="padding: 5px;display: flex; align-items: center;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="" fill="currentColor" viewBox="0 0 16 16" class="bi bi-terminal-fill" style="font-size: 40px; padding: 5px;">
+                    <path d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm9.5 5.5h-3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1m-6.354-.354a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708L4.793 6.5z"></path>
+                </svg>
+                <p style="width: 100%;">&nbsp;New terminal</p>
+                <div style="right:0; display: flex;">
+                    <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 5px; display: flex; align-items: center;">
+                        <p class="geomini" style="font-size: 10px;">CMD</p>
+                    </div>
+                    <p>&nbsp;+&nbsp;</p>
+                    <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 5px; display: flex; align-items: center;">
+                        <p class="geomini" style="font-size: 9px;">Shift</p>
+                    </div>
+                </div>
+                <p>&nbsp;+&nbsp;</p>
+                <div style="padding:10px; background-color: gray; border-radius: 5px; padding: 6px; display: flex; align-items: center;">
+                    <p class="geomini" style="font-size: 10px;">T</p>
+                </div>
+            </div>
+            <div class="menu-item" style="padding: 4px;display: flex; align-items: center;" onclick="shortcutslist();"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="" fill="currentColor" viewBox="0 0 16 16" class="bi bi-three-dots" style="font-size: 40px; padding: 5px;">
+                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"></path>
+                </svg>
+                <p style="width: 100%;">&nbsp; More shortcuts</p>
+            </div>
+        </div>
+        <div id="dropdown-menu">
+            <div class="menu-item" onclick="llap();">
+                <p id="menu-item">New File</p>
+            </div>
+            <div class="menu-item">
+                <p>Open Folder</p>
+            </div>
+            <div class="menu-item">
+                <p>Addons</p>
+            </div>
+            <div class="menu-item">
+                <p></p>
+            </div>
+            <div class="menu-item">
+                <p>About <strong><em>ZenPlyCode</em></strong></p>
+            </div>
+            <div class="menu-item">
+                <p>Exit</p>
+            </div>
+        </div>
+        <div id="help_php" style="height: 95%;">
+            <div id="titlebar">
+                <p>Welcome</p>
+            </div>
+            <div id="alal">
+                <div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div>
+                                    <div style="padding: 10px;">
+                                        <div></div>
+                                        <h1 class="geomini" style="margin-bottom: 0;">ZPC</h1>
+                                        <p>Welcome to ZenPlyCode! Click on ZenPly logo in top to open menu, and click on New file to start editing.</p><center></center>
+                                        <h1 class="geomini">Help guide</h1>
+                                        <p><strong>To change the programming language, press Ctrl + Shift + L.</strong><br><strong>To save the file, use Ctrl + S.</strong><br><strong>To open the addons store, use Ctrl + A.</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div style="padding: 10px;"><center><img src="assets/img/newfile.gif" style="border-radius: 10px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="height: 40%;"><!-- From Uiverse.io by Creatlydev --> 
+<div style="padding: 20px; "><button class="btn-github" onclick="window.location = 'https://github.com/anhumandev/zenplycode';">
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M7.99992 1.33331C7.12444 1.33331 6.25753 1.50575 5.4487 1.84078C4.63986 2.17581 3.90493 2.66688 3.28587 3.28593C2.03563 4.53618 1.33325 6.23187 1.33325 7.99998C1.33325 10.9466 3.24659 13.4466 5.89325 14.3333C6.22659 14.3866 6.33325 14.18 6.33325 14C6.33325 13.8466 6.33325 13.4266 6.33325 12.8733C4.48659 13.2733 4.09325 11.98 4.09325 11.98C3.78659 11.2066 3.35325 11 3.35325 11C2.74659 10.5866 3.39992 10.6 3.39992 10.6C4.06659 10.6466 4.41992 11.2866 4.41992 11.2866C4.99992 12.3 5.97992 12 6.35992 11.84C6.41992 11.4066 6.59325 11.1133 6.77992 10.9466C5.29992 10.78 3.74659 10.2066 3.74659 7.66665C3.74659 6.92665 3.99992 6.33331 4.43325 5.85998C4.36659 5.69331 4.13325 4.99998 4.49992 4.09998C4.49992 4.09998 5.05992 3.91998 6.33325 4.77998C6.85992 4.63331 7.43325 4.55998 7.99992 4.55998C8.56659 4.55998 9.13992 4.63331 9.66659 4.77998C10.9399 3.91998 11.4999 4.09998 11.4999 4.09998C11.8666 4.99998 11.6333 5.69331 11.5666 5.85998C11.9999 6.33331 12.2533 6.92665 12.2533 7.66665C12.2533 10.2133 10.6933 10.7733 9.20659 10.94C9.44659 11.1466 9.66659 11.5533 9.66659 12.1733C9.66659 13.0666 9.66659 13.7866 9.66659 14C9.66659 14.18 9.77325 14.3933 10.1133 14.3333C12.7599 13.44 14.6666 10.9466 14.6666 7.99998C14.6666 7.1245 14.4941 6.25759 14.1591 5.44876C13.8241 4.63992 13.333 3.90499 12.714 3.28593C12.0949 2.66688 11.36 2.17581 10.5511 1.84078C9.7423 1.50575 8.8754 1.33331 7.99992 1.33331V1.33331Z"
+      fill="currentcolor"
+    ></path>
+  </svg>
+  <span style="font-style: 300;">View ZPC in Github</span>
+</button>
+<style>
+/* From Uiverse.io by Creatlydev */ 
+.btn-github {
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  border: none;
+
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 100px;
+  font-weight: 800;
+  place-content: center;
+
+  padding: 0.75rem 1rem;
+  font-size: 0.825rem;
+  line-height: 1rem;
+
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.04),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.btn-github:hover {
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(252, 232, 3, 0.08);
+  color: #fce803;
+  transform: translate(0, -0.25rem);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+    </style></div></div>
+            </div>
+        </div>
+<div id="toolbar">
+    <div id="title" style="display: flex; align-items: center;">
+        <img id="lof" src="assets/img/psl.jpg" width="25" height="25" style="padding:1px; margin-right: 6px;"/>
+        <marquee style="color: white;" id="namebar" behavior="scroll" direction="left" scrollamount="3">
+    Untitled.psl
+</marquee>
+        <div style="width: 100%; height: 10px; display: flex; justify-content: flex-end; align-items: center;">
+        <svg onclick="eno()" class="bi bi-play-fill" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" style="font-size: 25px; margin-right: 5px;" onclick="run_psl();">
+    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"></path>
+</svg>
+        </div>
+    </div>
+</div>
+    <div id="codeEditor" style="position: relative; width: 100%; height: 90%; "></div>
+
+<script>
+    // 1. ویرایشگر رو با شناسه div صدا بزن
+    var editora = ace.edit("codeEditor");
+
+    // 2. (اختیاری) یه تم (Theme) براش انتخاب کن
+    editora.setTheme("ace/theme/monokai"); // تم‌های دیگه: twilight, github, etc.
+
+    // 3. (اختیاری) زبانی که می‌خوای براش تنظیم کن
+    editora.session.setMode("ace/mode/python"); // زبان‌های دیگه: python, html, css, etc.
+
+    // (اختیاری) فعال کردن autocompletion
+    ace.require("ace/ext/language_tools");
+    editora.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    });
+</script>
+
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/home.js"></script>
+</body>
+
+</html>
