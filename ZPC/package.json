@@ -1,0 +1,16 @@
+{
+  "name": "ZenPly",
+  "version": "1.0.0",
+  "description": "Code editor built with Electron",
+  "main": "main.js",
+  "author": "pouya",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-packager . ZenPly --platform=linux --arch=x64 --out=dist --overwrite"
+  },
+  "devDependencies": {
+    "electron": "^11.5.0",
+    "electron-packager": "^15.5.1"
+  }
+}
